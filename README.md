@@ -13,7 +13,7 @@ Developers often use AWS configuration files to store (temporary) credentials to
 > ... write some code ...
 > pytest tests  # execute tests
 ```
-Whoops! These tests just ran with access to your production account. Hopefully everything was correctly mocked / patched.
+Whoops! These tests just ran with access to your production account. Hopefully everything was correctly mocked or patched.
 
 ## Installation
 
@@ -23,7 +23,7 @@ Just install this plugin with `pip install pytest_aws_config`. No configuration 
 
 Of course, some of your tests may actually need AWS credentials. You have two options:
 
-- Disable the plugin for these tests: `pytest -p no:pytest_aws_config`
+- Disable the plugin when running functional tests: `pytest -p no:pytest_aws_config`
 - Keep the plugin and use some other mechanism (e.g. a pytest fixture) to set the configuration in the test. Then your tests remain independent of the configuration on the developer machine.
 
 ## Links
