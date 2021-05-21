@@ -9,4 +9,3 @@ COPY pytest_aws_config.py setup.cfg pyproject.toml /opt/pytest_aws_config/
 RUN pip install --use-feature=in-tree-build /opt/pytest_aws_config
 
 ENTRYPOINT ["pytest"]
-CMD [ "/opt/tests/test_credentials_available.py" ]
