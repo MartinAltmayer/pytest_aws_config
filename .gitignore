@@ -1,1 +1,6 @@
 credentials
+/venv
+/build
+/dist
+/pytest_aws_config.egg-info
+
