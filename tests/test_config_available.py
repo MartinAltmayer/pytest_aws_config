@@ -9,7 +9,7 @@ def test_config_available():
 
 
 def test_env_variables_available():
-    assert os.environ['AWS_ROLE_SESSION_NAME'] == 'test-role-session-name'  # see run_tests.sh
+    assert os.environ['AWS_ROLE_SESSION_NAME'] == 'test-role-session-name'  # see Dockerfile
 
 
 def test_credentials_available():

@@ -2,15 +2,17 @@
 set -eu
 cd "$(dirname "$0")"
 
-docker build . -t pytest_aws_config
+# We use docker instead of tox so that we can overwrite ~/.aws/{config,credentials}
 
-docker run --rm \
-  --env AWS_ROLE_SESSION_NAME="test-role-session-name" \
-  pytest_aws_config \
-  -p no:pytest_aws_config \
-  /opt/tests/test_config_available.py
+if [[ "$#" -eq 0 ]]; then
+  python_versions="3.6.13 3.7.10 3.8.10 3.9.5"
+else
+  python_versions="$@"
+fi
 
-docker run --rm \
-  --env AWS_ROLE_SESSION_NAME="test-role-session-name" \
-  pytest_aws_config \
-  /opt/tests/test_config_unavailable.py
+for version in $python_versions; do
+  echo "Testing with Python $version..."
+  tag="pytest-aws-config:$version"
+  docker build . -t "$tag" --build-arg "PYTHON_VERSION=$version"
+  docker run --rm "$tag"
+done

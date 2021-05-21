@@ -3,4 +3,5 @@ credentials
 /build
 /dist
 /pytest_aws_config.egg-info
+__pycache__
 
