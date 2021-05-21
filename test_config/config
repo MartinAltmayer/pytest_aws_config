@@ -1,3 +1,5 @@
 [default]
 region=eu-central-1
 
+[profile other]
+region=us-east-2
